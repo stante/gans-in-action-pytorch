@@ -25,10 +25,12 @@ in the notebook. For plotting results and drawing images, the popular
 
 ## Conditional GAN (CGAN)
 
-Conditionals GAN is a variant presented in the paper [Conditional
+Conditional GAN is a variant presented in the paper [Conditional
 Generative Adversarial Nets](https://arxiv.org/abs/1411.1784) by
 *Mehdi Mirza* and *Simon Osindero*. This architecture allows to direct
-the generator what samples to create. The provided example in the
+the generator what samples to create.
+
+The provided example in the
 notebook [here](chapter-8/Chapter_8_CGAN.ipynb) is using the MNIST
 dataset to train a generator and allows to tell the generator what
 number should be generated. The following images shows some results.
