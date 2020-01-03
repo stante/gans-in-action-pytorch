@@ -1,0 +1,22 @@
+\documentclass[tikz, border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+
+\begin{document}
+
+\tikzstyle{box} = [draw, rectangle, rounded corners, color=black!80, fill=gray!20!blue!10, minimum width=7em, minimum height=3.5em]
+\tikzstyle{line>} = [-{Latex[length=2mm]}, color=black!80]
+\tikzstyle{<line} = [{Latex[length=2mm]}-, color=black!80]
+  
+\begin{tikzpicture}[auto]
+  \node [box] (G) at (2.5,0) {\textsf{Generator}};
+  \node [box] (D) at (7, 0) {\textsf{Discriminator}};
+  \draw [line>] (G) -- node[above]{$(x^{*}, y)$}(D);
+  \draw [<line] (D.270) -- ++(0, -1) node[below]{$(x, y)$};
+  \draw [<line] (G.170) -- ++(-1, 0) node[left]{$z \in Z$};
+  \draw [<line] (G.190) -- ++(-1, 0) node[left]{$y$};
+  \draw [line>] (D.0) -- ++(1,0) node[right]{$\sigma$};
+\end{tikzpicture}
+
+\end{document}
