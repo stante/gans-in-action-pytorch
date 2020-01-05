@@ -3,7 +3,7 @@
 \usetikzlibrary{arrows.meta,calc,decorations.pathreplacing}
 
 \tikzset{
-  pics/feature/.style  args={#1/#2/#3}{% #1=depth, #2=height, #3=width
+  pics/feature/.style  args={#1/#2/#3/#4/#5/#6}{% #1=depth, #2=height, #3=width
     code = {
       \coordinate (-out) at (#1/2, 0, 0);
       \coordinate (-in) at (-#1/2, 0, 0);
@@ -24,9 +24,9 @@
       \path[draw] (B) -- (E) -- (F) -- (C) -- (B);
       % Top face
       \path[draw] (F) -- (G) -- (D) -- (C) -- (F);
-      \path [draw, decoration={brace,mirror,raise=5pt},decorate](A) -- node[midway, below=6pt]{\scriptsize 1} (B);
-      \path [draw, decoration={brace,mirror,raise=5pt},decorate] (B) -- node[midway, right=12pt, below]{\scriptsize 28} (E);
-      \path [draw, decoration={brace,mirror,raise=5pt},decorate](E) -- node[midway, right=6pt]{\scriptsize 28} (F);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](A) -- node[midway, below=6pt]{\scriptsize #4} (B);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate] (B) -- node[midway, right=12pt, below]{\scriptsize #5} (E);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](E) -- node[midway, right=6pt]{\scriptsize #6} (F);
       \node{\tikzpictext};
 }}}
 
@@ -53,7 +53,6 @@
 }
 
 \begin{document}
-q
 \tikzstyle{box} = [draw, rectangle, rounded corners, color=black!80, fill=gray!20!blue!10, minimum width=7em, minimum height=3.5em]
 \tikzstyle{line>} = [-{Latex[length=2mm]}, color=black!80]
 \tikzstyle{<line} = [{Latex[length=2mm]}-, color=black!80]
@@ -64,10 +63,10 @@ q
 \begin{tikzpicture}
   \draw (1, 0) pic{dense={0.5/7/768}};
   % \draw (3, 0) pic{features={0.25/5/5}};
-  \pic (feature1) at (3, 0) {feature=0.25/5/5};
-  \pic (feature2) at (6, 0) {feature={1.25/4/4}};
-  \pic (feature3) at (9.25, 0) {feature={2/2/2}};
-  \pic (feature4) at (13.25, 0) {feature={4/0.75/0.75}};
+  \pic (feature1) at (3, 0) {feature=0.25/5/5/1/28/28};
+  \pic (feature2) at (6, 0) {feature={1.25/4/4/64/14/14}};
+  \pic (feature3) at (9.25, 0) {feature={2/2/2/64/7/7}};
+  \pic (feature4) at (13.25, 0) {feature={4/0.75/0.75/128/3/3}};
   \draw (feature1-out) pic[scale=0.5]{conv={0.75/0.75/feature2-in}};
   \draw (feature2-out) pic[scale=0.5]{conv={0.75/0.75/feature3-in}};
   \draw (feature3-out) pic[scale=0.5]{conv={0.75/0.75/feature4-in}};
