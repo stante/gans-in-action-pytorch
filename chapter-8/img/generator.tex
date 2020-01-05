@@ -1,21 +1,33 @@
 \documentclass[tikz, border=20pt]{standalone}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing}
 
 \tikzset{
   pics/feature/.style  args={#1/#2/#3}{% #1=depth, #2=height, #3=width
     code = {
       \coordinate (-out) at (#1/2, 0, 0);
       \coordinate (-in) at (-#1/2, 0, 0);
-  \draw [dashed] (-#1/2, -#2/2, #3/2) -- (-#1/2, -#2/2, -#3/2) -- (#1/2, -#2/2, -#3/2);
-  \draw [dashed] (-#1/2, -#2/2, -#3/2) -- (-#1/2, #2/2, -#3/2);
-  \path[draw] (-#1/2, -#2/2, #3/2) -- (#1/2, -#2/2, #3/2) -- (#1/2, #2/2, #3/2) -- (-#1/2, #2/2, #3/2) -- (-#1/2, -#2/2, #3/2);
-  \path[draw] (#1/2, -#2/2, #3/2) -- (#1/2, -#2/2, -#3/2) -- (#1/2, #2/2, -#3/2) -- (#1/2, #2/2, #3/2);
-  \draw (#1/2, #2/2, -#3/2) -- (-#1/2, #2/2, -#3/2) --(-#1/2, #2/2, #3/2);
-  \draw (0, -#2/2, #3/2) node[below]{\scriptsize 1};
-  \draw (#1/2, -#2/2, 0) node[right]{\scriptsize 28};
-  \draw (#1/2, 0, -#3/2) node[right]{\scriptsize 28};
-  \node{\tikzpictext};
+      \coordinate (A) at (-#1/2, -#2/2, #3/2);
+      \coordinate (B) at (#1/2, -#2/2, #3/2);
+      \coordinate (C) at (#1/2, #2/2, #3/2);
+      \coordinate (D) at (-#1/2, #2/2, #3/2);
+      \coordinate (E) at (#1/2, -#2/2, -#3/2);
+      \coordinate (F) at (#1/2, #2/2, -#3/2);
+      \coordinate (G) at (-#1/2, #2/2, -#3/2);
+      \coordinate (H) at (-#1/2, -#2/2, -#3/2);
+      \draw [dashed] (H) -- (A);
+      \draw [dashed] (H) -- (E);
+      \draw [dashed] (H) -- (G);
+      % Front face
+      \path[draw] (A) -- (B) -- (C) -- (D) -- (A);
+      % Right face
+      \path[draw] (B) -- (E) -- (F) -- (C) -- (B);
+      % Top face
+      \path[draw] (F) -- (G) -- (D) -- (C) -- (F);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](A) -- node[midway, below=6pt]{\scriptsize 1} (B);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate] (B) -- node[midway, right=12pt, below]{\scriptsize 28} (E);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](E) -- node[midway, right=6pt]{\scriptsize 28} (F);
+      \node{\tikzpictext};
 }}}
 
 \tikzset{
@@ -41,7 +53,7 @@
 }
 
 \begin{document}
-
+q
 \tikzstyle{box} = [draw, rectangle, rounded corners, color=black!80, fill=gray!20!blue!10, minimum width=7em, minimum height=3.5em]
 \tikzstyle{line>} = [-{Latex[length=2mm]}, color=black!80]
 \tikzstyle{<line} = [{Latex[length=2mm]}-, color=black!80]
