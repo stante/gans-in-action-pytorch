@@ -1,4 +1,4 @@
-IMAGES = discriminator.png architecture.png
+IMAGES = discriminator.png architecture.png generator.png
 
 .PHONY: clean
 
