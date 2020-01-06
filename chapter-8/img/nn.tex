@@ -58,18 +58,21 @@
 \tikzset{
   pics/trans/.style args={#1/#2/#3}{
     code = {
-     \coordinate (A) at ($(#3) + (0, -#1/2, #2/2)$);
-     \coordinate (B) at ($(#3) + (0, -#1/2, -#2/2)$);
-     \coordinate (C) at ($(#3) + (0, #1/2, -#2/2)$);
-     \coordinate (D) at ($(#3) + (0, #1/2, #2/2)$);
+     \coordinate (A) at ($(#3) + (0, -0.25, 0.25)$);
+     \coordinate (B) at ($(#3) + (0, -0.25, -0.25)$);
+     \coordinate (C) at ($(#3) + (0, 0.25, -0.25)$);
+     \coordinate (D) at ($(#3) + (0, 0.25, 0.25)$);
       
       \draw [dashed] (A) -- (0,0,0);
       \draw [dashed] (B) -- (0 0,0);
       \draw [dashed] (C) -- (0,0,0);
       \draw [dashed] (D) -- (0,0,0);
       \draw (A) -- (B) -- (C) -- (D) -- (A);
-      \draw (A) -- node[midway, below]{\scriptsize 3} (B);
-      \draw (B) -- node[midway, right=-2pt]{\scriptsize 3} (C);
+      \draw (A) -- node[midway, below]{\scriptsize{#1}} (B);
+      \draw (B) -- node[midway, right=-2pt]{\scriptsize{#2}} (C);
     }
   }
 }
+
+\tikzstyle{line>} = [-{Latex[length=2mm]}]
+\tikzstyle{<line} = [{Latex[length=2mm]}-]
