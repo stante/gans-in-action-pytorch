@@ -63,14 +63,13 @@
      \coordinate (C) at ($(#3) + (0, #1/2, -#2/2)$);
      \coordinate (D) at ($(#3) + (0, #1/2, #2/2)$);
       
-      \draw [dashed] (0, 0,0) -- (A);
-      \draw [dashed] (0, 0,0) -- (B);
-      \draw [dashed] (0, 0,0) -- (C);
-      \draw [dashed] (0, 0,0) -- (D);
+      \draw [dashed] (A) -- (0,0,0);
+      \draw [dashed] (B) -- (0 0,0);
+      \draw [dashed] (C) -- (0,0,0);
+      \draw [dashed] (D) -- (0,0,0);
       \draw (A) -- (B) -- (C) -- (D) -- (A);
       \draw (A) -- node[midway, below]{\scriptsize 3} (B);
       \draw (B) -- node[midway, right=-2pt]{\scriptsize 3} (C);
     }
   }
 }
-
