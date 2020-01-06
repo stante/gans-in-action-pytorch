@@ -1,0 +1,57 @@
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing}
+
+\tikzset{
+  pics/feature/.style  args={#1/#2/#3/#4/#5/#6/#7}{% #1=depth, #2=height, #3=width
+    code = {
+      \coordinate (-out) at (#1/2, 0, 0);
+      \coordinate (-in) at (-#1/2, 0, 0);
+      \coordinate (A) at (-#1/2, -#2/2, #3/2);
+      \coordinate (B) at (#1/2, -#2/2, #3/2);
+      \coordinate (C) at (#1/2, #2/2, #3/2);
+      \coordinate (D) at (-#1/2, #2/2, #3/2);
+      \coordinate (E) at (#1/2, -#2/2, -#3/2);
+      \coordinate (F) at (#1/2, #2/2, -#3/2);
+      \coordinate (G) at (-#1/2, #2/2, -#3/2);
+      \coordinate (H) at (-#1/2, -#2/2, -#3/2);
+      \draw [dashed] (H) -- (A);
+      \draw [dashed] (H) -- (E);
+      \draw [dashed] (H) -- (G);
+      % Front face
+      \path[draw] (A) -- (B) -- (C) -- (D) -- (A);
+      % Right face
+      \path[draw] (B) -- (E) -- (F) -- (C) -- (B);
+      % Top face
+      \path[draw] (F) -- (G) -- (D) -- (C) -- (F);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](A) -- node[midway, below=6pt]{\scriptsize #4} (B);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate] (B) -- node[midway, right=12pt, below]{\scriptsize #5} (E);
+      \path [draw, decoration={brace,mirror,raise=5pt},decorate](E) -- node[midway, right=6pt]{\scriptsize #6} (F);
+      \path (F) -- node[midway,above]{#7}(G);
+      \node{\tikzpictext};
+}}}
+
+\tikzset{
+  pics/dense/.style args={#1/#2/#3/#4}{
+    code = {
+      \coordinate (-in) at (-#1/2,0);
+      \coordinate (-out) at (#1/2,0);
+      \draw (-#1/2, -#2/2) -- (#1/2, -#2/2) -- (#1/2, #2/2) -- (-#1/2, #2/2) -- (-#1/2, -#2/2);
+      \draw (0, -#2/2) node[below]{\scriptsize #3};
+      \path (#1/2, #2/2) -- node[midway,above]{#4}(-#1/2, #2/2);
+}}}
+
+\tikzset{
+  pics/conv/.style args={#1/#2/#3}{
+    code = {
+      \draw [dashed] (0, -#1/2, -#2/2) -- (#3);
+      \draw [dashed] (0, -#1/2, #2/2) -- (#3);
+      \draw [dashed] (0, #1/2, #2/2) -- (#3);
+      \draw [dashed] (0, #1/2, -#2/2) -- (#3);
+      \draw (0, -#1/2, -#2/2) -- (0, -#1/2, #2/2) -- (0, #1/2, #2/2) -- (0, #1/2, -#2/2) -- (0, -#1/2, -#2/2);
+      \draw (0, 0, #2/2) node[left]{\scriptsize 3};
+      \draw (0, #1/2, 0) node[above]{\scriptsize 3};
+
+    }
+  }
+}
+
