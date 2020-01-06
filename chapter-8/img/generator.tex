@@ -1,0 +1,29 @@
+\documentclass[tikz, border=20pt]{standalone}
+\input{nn.tex}
+\usepackage{tikz}
+\begin{document}
+\tikzstyle{box} = [draw, rectangle, rounded corners, color=black!80, fill=gray!20!blue!10, minimum width=7em, minimum height=3.5em]
+\tikzstyle{line>} = [-{Latex[length=2mm]}, color=black!80]
+\tikzstyle{<line} = [{Latex[length=2mm]}-, color=black!80]
+
+
+
+
+\begin{tikzpicture}
+  \pic (embed) at (0,0) {dense={0.25/1/100/$embed(y) \odot z$}};
+  \pic (dense) at (1.5,0) {dense={0.25/4/12544/$\mathit{dense}$}};
+  \pic (reshape) at (5.5,0) {feature={4/1/1/256/7/7/$\mathit{}$}};
+  \pic (trans1) at (10,0) {feature={2/2/2/128/14/14/$\mathit{trans1}$}};
+  \pic (trans2) at (13,0) {feature={1/2/2/64/14/14/$\mathit{trans2}$}};
+  \pic (trans3) at (15.5,0) {feature={0.25/4/4/1/28/28/$\mathit{trans3}$}};
+
+  
+  \draw [->] (embed-out) -- (dense-in);
+  \draw [->] (dense-out) -- node[above]{$\mathit{reshape}$} (reshape-in);
+  \draw (reshape-out) pic{trans={0.5/0.5/trans1-in}};
+  \draw (trans1-out) pic{trans={1/1/trans2-in}};
+  \draw (trans2-out) pic{trans={0.5/0.5/trans3-in}};
+
+\end{tikzpicture}
+
+\end{document}
