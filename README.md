@@ -23,6 +23,21 @@ The package `tqdm` is used to have a nice progress bar during training
 in the notebook. For plotting results and drawing images, the popular
 `matplotlib` library is used.
 
+## Deep Convolutional GAN (DCGAN)
+
+Deep Convolutional GAN is a variant presented in the paper
+[Unsupervised Representation Learning with Deep Convolutional
+Generative Adversarial Networks](https://arxiv.org/abs/1511.06434) by
+*Alec Radford*, *Luke Metz*, *Soumith Chintala*. This architecture
+introduced convolutional layers to GANs as well as some best practices like
+batch normalization. 
+
+The example in PyTorch is provided
+[here](chapter-4/Chapter_4_DCGAN.ipynb) and utilizes the MNIST dataset
+to train the generator. A following image shows some results.
+
+![DCGAN](img/dcgan-mnist.png)
+
 ## Conditional GAN (CGAN)
 
 Conditional GAN is a variant presented in the paper [Conditional
