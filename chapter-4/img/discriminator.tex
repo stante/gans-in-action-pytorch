@@ -4,9 +4,9 @@
 \begin{document}
 
 \begin{tikzpicture}
-  \pic (feature1) at (2.25, 0) {feature=0.5/5/5/2/28/28/$embed(y) \mathbin\Vert x$};
-  \pic (feature2) at (6, 0) {feature={2/3/3/64/14/14/$\mathit{conv1}$}};
-  \pic (feature3) at (9.8, 0) {feature={2/1.8/1.8/64/7/7/$\mathit{conv2}$}};
+  \pic (feature1) at (0,0) {feature=0.25/5/5/1/28/28/$x$};
+  \pic (feature2) at (4, 0) {feature={2/3/3/32/14/14/$\mathit{conv1}$}};
+  \pic (feature3) at (8.7, 0) {feature={3/1.8/1.8/64/7/7/$\mathit{conv2}$}};
   \pic (feature4) at (14, 0) {feature={4/0.9/0.9/128/3/3/$\mathit{conv3}$}};
   \pic (dense) at (17.25, 0) {dense={0.5/0.5/1/$\mathit{dense}$}};
   \draw (feature1-out) pic[scale=0.5]{conv={0.75/0.75/feature2-in}};
