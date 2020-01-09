@@ -5,7 +5,7 @@ IMAGES = discriminator.png architecture.png generator.png
 %.png: %.pdf
 	convert -define profile:skip=ICC -density 720 $< -filter point -quality 90 $@
 
-%.pdf: %.tex nn.tex
+%.pdf: %.tex
 	pdflatex $<
 
 all: $(IMAGES)
