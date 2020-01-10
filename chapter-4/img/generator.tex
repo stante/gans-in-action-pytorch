@@ -1,0 +1,22 @@
+\documentclass[tikz, border=20pt]{standalone}
+\input{../../tex/nn.tex}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+  \pic (z) at (0,0) {dense={0.5/2/100/$z$}};
+  \pic (dense) at (1.5,0) {dense={0.5/5/12544/$dense$}};
+  \pic (reshape) at (4.5,0) {feature={4/1.1/1.1/256/7/7/$$}};
+  \pic (trans1) at (9.5,0) {feature={3/1.7/1.7/128/14/14/$trans1$}};
+  \pic (trans2) at (13.5,0) {feature={2/1.7/1.7/64/14/14/$trans2$}};
+  \pic (trans3) at (16.5,0) {feature={0.25/4/4/1/28/28/$trans3$}};
+
+
+  \draw (reshape-out) pic{trans={3/3/trans1-in}};
+  \draw (trans1-out) pic{trans={3/3/trans2-in}};
+  \draw (trans2-out) pic{trans={3/3/trans3-in}};
+  \draw [line>] (z-out) -- (dense-in);
+  \draw [line>] (dense-out) -- (reshape-in);
+\end{tikzpicture}
+
+\end{document}
