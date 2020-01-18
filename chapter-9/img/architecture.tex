@@ -1,0 +1,26 @@
+\documentclass[tikz, border={20pt 20pt 50pt 20pt}]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+
+\begin{document}
+
+\tikzstyle{box} = [draw, rectangle, rounded corners, color=black!80, fill=gray!20!blue!10, minimum width=7em, minimum height=3.5em]
+\tikzstyle{line>} = [-{Latex[length=2mm]}, color=black!80]
+\tikzstyle{<line} = [{Latex[length=2mm]}-, color=black!80]
+  
+\begin{tikzpicture}[auto]
+  \node [box] (G1) at (2.5,0) {\textsf{$G \colon X \to Y$}};
+  \node [box] (G2) at (7, 0) {\textsf{$F \colon Y \to X$}};
+  \node [box] (D1) at (4.75, -2.5) {\textsf{$D_{Y}$}};
+  \node [box] (D2) at (9.25, -2.5) {\textsf{$D_{X}$}};
+  \draw [line>] (G1) -- node[below]{$y^{*}$}(G2);
+  \draw [<line] (G1.180) -- ++(-1, 0) node[left]{$x \in X$};
+  \draw [line>] (G2.0) -- node[below]{$x^{*}$}++(2,0);
+  \draw [line>] (G1.east) arc (55:0:2.3);
+  \draw [line>] (G2.east) arc (55:0:2.3);
+  \draw [line>] (D1.south) -- ++(0,-1) node[below]{$\sigma_{Y}$};
+  \draw [line>] (D2.south) -- ++(0,-1) node[below]{$\sigma_{X}$};
+\end{tikzpicture}
+
+\end{document}
